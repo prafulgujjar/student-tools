@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Tools Hub</title>
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:#f4f4f4;
+}
+
+.tool{
+background:white;
+padding:20px;
+margin:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+padding:10px 15px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Student Tools Hub</h1>
+
+<div class="tool">
+<h2>Age Calculator</h2>
+<input type="date" id="dob">
+<button onclick="calcAge()">Calculate Age</button>
+<p id="ageResult"></p>
+</div>
+
+<div class="tool">
+<h2>Percentage Calculator</h2>
+<input id="marks" placeholder="Marks Obtained">
+<input id="total" placeholder="Total Marks">
+<button onclick="calcPercent()">Calculate</button>
+<p id="percentResult"></p>
+</div>
+
+<div class="tool">
+<h2>Password Generator</h2>
+<button onclick="generatePass()">Generate Password</button>
+<p id="passResult"></p>
+</div>
+
+<script>
+
+function calcAge(){
+let dob = new Date(document.getElementById("dob").value);
+let today = new Date();
+let age = today.getFullYear() - dob.getFullYear();
+document.getElementById("ageResult").innerHTML = "Your Age: " + age;
+}
+
+function calcPercent(){
+let marks = document.getElementById("marks").value;
+let total = document.getElementById("total").value;
+
+let percent = (marks/total)*100;
+
+document.getElementById("percentResult").innerHTML =
+"Percentage: " + percent.toFixed(2) + "%";
+}
+
+function generatePass(){
+let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+let pass="";
+
+for(let i=0;i<10;i++){
+pass+=chars.charAt(Math.floor(Math.random()*chars.length));
+}
+
+document.getElementById("passResult").innerHTML=pass;
+}
+
+</script>
+
+</body>
+</html>
